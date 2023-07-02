@@ -5,23 +5,27 @@
 
 START_TEST(sub_nill) {
   // Arrange
-  int n2 = 0b1001001;
-  int n1 = 0b1111;
   int diff = 0;
+
   // Act
-  e_sub(n1, n2, &diff);
+
   // Assert
-  ck_assert_int_eq(diff, n1 - n2);
+  for (int i = -12; i < 12; i++) {
+    e_sub(i, i, &diff);
+    ck_assert_int_eq(diff, i - i);
+  }
 }
 END_TEST
 
 START_TEST(sub_pos) {
   // Arrange
   int n1 = 11;
-  int n2 = 111;
+  int n2 = 21;
   int diff = 0;
+
   // Act
   e_sub(n1, n2, &diff);
+
   // Assert
   ck_assert_int_eq(diff, n1 - n2);
 }
@@ -29,8 +33,8 @@ END_TEST
 
 START_TEST(sub_neg) {
   // Arrange
-  int n1 = 2;
-  int n2 = 2;
+  int n1 = -11;
+  int n2 = -21;
   int diff = 0;
 
   // Act
@@ -57,7 +61,7 @@ END_TEST
 
 START_TEST(sub_neg_pos) {
   // Arrange
-  int n1 = -11;
+  int n1 = 11;
   int n2 = -21;
   int diff = 0;
 

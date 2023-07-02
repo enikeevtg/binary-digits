@@ -4,10 +4,10 @@
  * @brief get the value of the number bit in position bit_pos
  * (in count from right side)
  *
- * @param 'value' is the number that function should get 'bit_value'.
- * @param 'bit_pos' is the bit position of the number bit function should get.
+ * @param value is the number that function should get 'bit_value'.
+ * @param bit_pos is the bit position of the number bit function should get.
  *
- * @return 'bit_value' is value of the number bit in position bit_pos
+ * @return value of the number bit in position bit_pos
  */
 
 #include "internal.h"
