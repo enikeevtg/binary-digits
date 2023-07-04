@@ -5,16 +5,16 @@
  * @return array of values of the number bits
  */
 
-#include "internal.h"
+#include "../binary.h"
 
 int* e_int_to_bin(int number) {
-  static int _0b_number[32];
-  int index = 31;
+  static int bin_number[INT_BIN_LEN];
+  int index = INT_BIN_LEN - 1;
   int bit_pos = 0;
   while (index) {
-    _0b_number[index] = e_get_bit(number, bit_pos);
+    bin_number[index] = e_get_bit(number, bit_pos);
     index--;
     bit_pos++;
   }
-  return _0b_number;
+  return bin_number;
 }

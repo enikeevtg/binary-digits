@@ -12,11 +12,16 @@
  * 2 - the number is too small or equal to negative infinity
  */
 
-#include "internal.h"
+#include "../binary.h"
 
-int e_mul_10(int value, int* result) {
-  int value_1 = e_shift_to_left(value, 1);
-  int value_2 = e_shift_to_left(value, 3);
-  e_add(value_1, value_2, result);
+int e_mul(int value_1, int value_2, int* result) {
+  int offset_buf = 0;
+  for (int i = 0; i < INT_BIN_LEN; i++) {
+    if (e_get_bit(value_2, i)) {
+      value_1 = e_shift_to_left(value_1, i - offset_buf);
+      e_add(value_1, *result, result);
+      offset_buf = i;
+    }
+  }
   return 0;
 }

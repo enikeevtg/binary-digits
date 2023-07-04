@@ -12,8 +12,8 @@
  * 2 - the number is too small or equal to negative infinity
  */
 
-#include "internal.h"
+#include "../binary.h"
 
-int e_div_10(int value, int* result) {
+// int e_div_10(int value, int* result) {
 
-}
+// }

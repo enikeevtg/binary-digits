@@ -11,6 +11,7 @@ int main() {
   int inv_num = ~num + 1U;
   printf("num = %d\ninv_num = %d\n", num, inv_num);
   printf("So int type has \"Two's complement\" representation\n");
-  printf("-11 -> uint: %u", -11);
+  printf("-11 -> uint: %u\n", -11);
+  printf("%X", 0b10000000000000000000000000000000);
   return 0;
 }

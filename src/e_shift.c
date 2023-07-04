@@ -11,14 +11,14 @@
  * @warning If the bit_pos > 95 (31 for int), function doesn't make changes.
  */
 
-#include "internal.h"
+#include "../binary.h"
 
 /* shift to right function */
-int e_shift_to_right(int value, int offset) {
+int e_shift_to_right(int value, unsigned int offset) {
   offset = offset % 32;
   if (offset) {
     int i = 0;
-    for (; i + offset <= 31; i++) {
+    for (; i + offset < INT_BIN_LEN; i++) {
       int bit = e_get_bit(value, i + offset);
       e_set_bit(&value, i, bit);
     }
@@ -28,11 +28,11 @@ int e_shift_to_right(int value, int offset) {
 }
 
 /* shift to left function */
-int e_shift_to_left(int value, int offset) {
+int e_shift_to_left(int value, unsigned int offset) {
   offset = offset % 32;
   if (offset) {
-    int i = 31;
-    for (; i - offset >= 0; i--) {
+    int i = INT_BIN_LEN - 1;
+    for (; i - (int)offset >= 0; i--) {
       int bit = e_get_bit(value, i - offset);
       e_set_bit(&value, i, bit);
     }

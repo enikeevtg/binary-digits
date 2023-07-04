@@ -74,12 +74,9 @@ START_TEST(sub_neg_pos) {
 END_TEST
 
 Suite* sub_func(void) {
-  Suite* s;
-  TCase* tc_sub;
+  Suite* s = suite_create("subtraction function");
 
-  s = suite_create("sub function");
-
-  tc_sub = tcase_create("two numbers diffmation");
+  TCase* tc_sub = tcase_create("two numbers subtraction");
   tcase_add_test(tc_sub, sub_nill);
   tcase_add_test(tc_sub, sub_pos);
   tcase_add_test(tc_sub, sub_neg);
@@ -91,16 +88,12 @@ Suite* sub_func(void) {
 }
 
 int main(void) {
-  int failed = 0;
-  Suite* sub_suite;
-  SRunner* runner;
-
-  sub_suite = sub_func();
-  runner = srunner_create(sub_suite);
+  Suite* sub_suite = sub_func();
+  SRunner* runner = srunner_create(sub_suite);
 
   srunner_run_all(runner, CK_NORMAL);
   int tests_count = srunner_ntests_run(runner);
-  failed += srunner_ntests_failed(runner);
+  int failed = srunner_ntests_failed(runner);
   srunner_free(runner);
 
   printf("\033[0;32mSUCCESS: %d\n", tests_count - failed);
