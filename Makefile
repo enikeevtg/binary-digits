@@ -53,6 +53,9 @@ test_sub: lib
 test_mul: lib
 	$(MAKE) -C $(TESTDIR) $@
 
+test_div: lib
+	$(MAKE) -C $(TESTDIR) $@
+
 test_get: lib
 	$(MAKE) -C $(TESTDIR) $@
 
@@ -72,3 +75,6 @@ gost:
 clean:
 	rm -rf $(TARGET) $(OBJDIR) *.out *.gch
 
+tmp: lib tmp.c
+	$(CC) tmp.c $(TARGET)
+	./a.out

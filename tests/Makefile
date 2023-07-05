@@ -46,6 +46,12 @@ test_set_bit: test_set_bit.c
 	@./$@ $(WRITELOG)
 	@rm -f $@
 
+test_shift: test_shift.c
+	@echo "\n\033[0;33m$<\033[0m" $(WRITELOG)
+	@$(CC) $(CF) $(TEST_FLAGS) $< -o $@ $(LIB)
+	@./$@ $(WRITELOG)
+	@rm -f $@
+
 test_add: clean test_addition
 	$(OPENLOG)
 
@@ -73,7 +79,10 @@ test_multiplication: test_mul.c
 	@./$@ $(WRITELOG)
 	@rm -f $@
 
-test_shift: test_shift.c
+test_div: clean test_division
+	$(OPENLOG)
+
+test_division: test_div.c
 	@echo "\n\033[0;33m$<\033[0m" $(WRITELOG)
 	@$(CC) $(CF) $(TEST_FLAGS) $< -o $@ $(LIB)
 	@./$@ $(WRITELOG)

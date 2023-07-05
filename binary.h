@@ -14,6 +14,7 @@
 int e_add(int value_1, int value_2, int* result);
 int e_sub(int value_1, int value_2, int* result);
 int e_mul(int value_1, int value_2, int* result);
+int e_div(int value_1, int value_2, int* result);
 
 // INTERNAL FUNCTIONS
 int e_get_bit(int value, int bit_pos);
@@ -22,8 +23,6 @@ int e_get_sign(int value);
 void e_set_bit(int* value, int bit_pos, int bit_value);
 void e_set_sign(int* value, int sign);
 
-
-int e_div_10(int value, int* result);
 int e_shift_to_right(int value, unsigned int offset);
 int e_shift_to_left(int value, unsigned int offset);
 

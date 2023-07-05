@@ -25,7 +25,7 @@ int e_get_bit(int value, int bit_pos) {
 ///         '0' is positive int value
 ///         '1' is negative int value
 int e_get_sign(int value) {
-  return (value & INT_BIN_LEN) ? 1 : 0;
+  return (value & SIGN_MASK) ? 1 : 0;
 }
 
 /// @brief get sign bit of the signed int 'value'

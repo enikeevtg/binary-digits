@@ -3,109 +3,78 @@
 
 #include "../binary.h"
 
-START_TEST(mul_pos_pos) {
+START_TEST(div_pos_pos) {
   // Arrange
-  int val_1 = 11;
-  int val_2 = 254;
+  int val_1 = 121;
+  int val_2 = 11;
   int res = 0;
 
   // Act
-  e_mul(val_1, val_2, &res);
+  e_div(val_1, val_2, &res);
 
   // Assert
-  ck_assert_int_eq(res, val_1 * val_2);
+  ck_assert_int_eq(res, val_1 / val_2);
 }
 END_TEST
 
-START_TEST(mul_neg_pos) {
+START_TEST(div_neg_pos) {
   // Arrange
-  int val_1 = -11;
-  int val_2 = 254;
+  int val_1 = -121;
+  int val_2 = 11;
   int res = 0;
 
   // Act
-  e_mul(val_1, val_2, &res);
+  e_div(val_1, val_2, &res);
 
   // Assert
-  ck_assert_int_eq(res, val_1 * val_2);
+  ck_assert_int_eq(res, val_1 / val_2);
 }
 END_TEST
 
-START_TEST(mul_pos_neg) {
+START_TEST(div_pos_neg) {
   // Arrange
-  int val_1 = 11;
-  int val_2 = -254;
+  int val_1 = 121;
+  int val_2 = -11;
   int res = 0;
 
   // Act
-  e_mul(val_1, val_2, &res);
+  e_div(val_1, val_2, &res);
 
   // Assert
-  ck_assert_int_eq(res, val_1 * val_2);
+  ck_assert_int_eq(res, val_1 / val_2);
 }
 END_TEST
 
-START_TEST(mul_neg_neg) {
+START_TEST(div_neg_neg) {
   // Arrange
-  int val_1 = -11;
-  int val_2 = -254;
+  int val_1 = -121;
+  int val_2 = -11;
   int res = 0;
 
   // Act
-  e_mul(val_1, val_2, &res);
+  e_div(val_1, val_2, &res);
 
   // Assert
-  ck_assert_int_eq(res, val_1 * val_2);
+  ck_assert_int_eq(res, val_1 / val_2);
 }
 END_TEST
 
-// START_TEST(div_pos) {
-//   // Arrange
-//   int n = 11;
-//   int div = 0;
+Suite* div_func(void) {
+  Suite* s = suite_create("division function");
 
-//   // Act
-//   e_div_10(n, &div);
-
-//   // Assert
-//   ck_assert_int_eq(div, n / 10);
-// }
-// END_TEST
-
-// START_TEST(div_neg) {
-//   // Arrange
-//   int n = -11;
-//   int div = 0;
-
-//   // Act
-//   e_div_10(n, &div);
-
-//   // Assert
-//   ck_assert_int_eq(div, n / 10);
-// }
-// END_TEST
-
-Suite* mul_func(void) {
-  Suite* s = suite_create("multiplication function");
-
-  TCase* tc_mul = tcase_create("two numbers mutiplication");
-  tcase_add_test(tc_mul, mul_pos_pos);
-  tcase_add_test(tc_mul, mul_neg_pos);
-  tcase_add_test(tc_mul, mul_pos_neg);
-  tcase_add_test(tc_mul, mul_neg_neg);
-  suite_add_tcase(s, tc_mul);
-
-  // TCase* tc_div = tcase_create("number division by 10");
-  // tcase_add_test(tc_div, div_pos);
-  // tcase_add_test(tc_div, div_neg);
-  // suite_add_tcase(s, tc_div);
+  TCase* tc_div = tcase_create("two numbers division");
+  tcase_add_test(tc_div, div_pos_pos);
+  tcase_add_test(tc_div, div_neg_pos);
+  tcase_add_test(tc_div, div_pos_neg);
+  tcase_add_test(tc_div, div_neg_neg);
+  suite_add_tcase(s, tc_div);
 
   return s;
 }
 
 int main(void) {
-  Suite* mul_suite = mul_func();
-  SRunner* runner = srunner_create(mul_suite);
+  Suite* div_suite = div_func();
+  SRunner* runner = srunner_create(div_suite);
 
   srunner_run_all(runner, CK_NORMAL);
   int tests_count = srunner_ntests_run(runner);
